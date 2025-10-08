@@ -44,28 +44,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mv.getMExito().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("¡TE DAMOS LA BIENVENIDA!")
-                        .setMessage(s)
-                        .setNeutralButton("Iniciar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        })
-                        .show();
-            }
-        });
-
         binding.btIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mv.autenticar(binding.etUsuario.getText(),binding.etContra.getText());
+                mv.login(binding.etUsuario.getText(),binding.etContra.getText());
             }
         });
 
