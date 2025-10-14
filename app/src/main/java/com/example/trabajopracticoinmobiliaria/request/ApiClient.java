@@ -3,9 +3,12 @@ package com.example.trabajopracticoinmobiliaria.request;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.trabajopracticoinmobiliaria.models.Inmueble;
 import com.example.trabajopracticoinmobiliaria.models.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -20,7 +23,7 @@ import retrofit2.http.PUT;
 
 public class ApiClient {
 
-    private static final String URLBASE= "https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/";
+    public static final String URLBASE= "https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/";
 
     public static InmobiliariaService getApiInmobiliaria(){
 
@@ -55,6 +58,9 @@ public class ApiClient {
 
         @GET("api/Propietarios")
         Call<Propietario> obtenerPropietario(@Header("Authorization") String token);
+
+        @GET("api/Inmuebles")
+        Call<List<Inmueble>> obtenerInmuebles(@Header("Authorization") String token);
 
         @PUT("api/Propietarios/actualizar")
         Call<Propietario> actualizarPropietario(@Header("Authorization") String token, @Body Propietario p);
