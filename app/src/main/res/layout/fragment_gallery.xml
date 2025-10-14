@@ -24,8 +24,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:ems="10"
-        android:inputType="text"
+        android:enabled="false"
         android:hint="Nombre"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -36,8 +37,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:inputType="text"
+        android:enabled="false"
         android:hint="Apellido"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNombreEditar" />
@@ -48,8 +50,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:inputType="number"
+        android:enabled="false"
         android:hint="Documento (DNI)"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etApellidoEditar" />
@@ -60,8 +63,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:enabled="false"
         android:hint="Correo Electrónico (Email)"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDniEditar" />
@@ -72,35 +76,37 @@
         android:layout_height="50dp"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:inputType="number"
+        android:enabled="false"
         android:hint="Teléfono"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailEditar" />
-
-    <EditText
-        android:id="@+id/etContraEditar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTelEditar" />
 
     <Button
         android:id="@+id/btEditarPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="85dp"
         android:backgroundTint="#96001E"
-        android:text="EDITAR"
+        android:text="@string/editar"
         android:textColor="#000769"
-        app:icon="@drawable/edit"
+        android:tag="editar"
+        android:drawableLeft="@drawable/edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContraEditar" />
+        app:layout_constraintTop_toBottomOf="@+id/etTelEditar" />
+
+    <TextView
+        android:id="@+id/tvErroresEditarPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textColor="#F80000"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTelEditar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

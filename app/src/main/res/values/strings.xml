@@ -16,4 +16,5 @@
     <string name="inmuebles">Inmuebles</string>
     <string name="contratos_e_inquilinos">Contratos e inquilinos</string>
     <string name="salir">Salir</string>
+    <string name="editar">EDITAR</string>
 </resources>

@@ -17,8 +17,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivityViewModel extends AndroidViewModel {
-    private String usser,password;
     private MutableLiveData<String> mError = new MutableLiveData<>();
+    private String regexEmail = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
     }
@@ -31,6 +31,18 @@ public class MainActivityViewModel extends AndroidViewModel {
         ApiClient.InmobiliariaService api = ApiClient.getApiInmobiliaria();
         String mail = Email.toString();
         String clave = Eclave.toString();
+        if(mail.isEmpty()){
+            mError.setValue("Ingrese un mail");
+            return;
+        }
+        if(clave.isEmpty()){
+            mError.setValue("Ingrese una clave");
+            return;
+        }
+        if(!mail.matches(regexEmail)){
+            mError.setValue("Ingrese un mail válido");
+            return;
+        }
         Call<String> llamada = api.login(mail, clave);
         llamada.enqueue(new Callback<String>() {
             @Override
