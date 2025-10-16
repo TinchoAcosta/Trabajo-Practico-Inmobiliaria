@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,13 +23,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolderInmu
     private List<Inmueble> lista;
     private Context context;
     private LayoutInflater li;
+    private OnInmuebleClickListener listener;
     private DecimalFormat formatoPrecio = new DecimalFormat("#,##0.00");
 
 
-    public ListAdapter(List<Inmueble> lista, LayoutInflater li, Context context) {
+    public ListAdapter(List<Inmueble> lista, LayoutInflater li, Context context, OnInmuebleClickListener listener) {
         this.lista = lista;
         this.li = li;
         this.context = context;
+        this.listener = listener;
     }
 
     @NonNull
@@ -54,7 +57,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolderInmu
 
             Glide.with(context)
                     .load(fullUrl)
+                    .error(R.drawable.inmueble)
+                    .placeholder(R.drawable.ic_launcher_foreground)
                     .into(holder.foto);
+
+            holder.ver.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onVerClick(inmuebleActual);
+                }
+            });
         }
     }
 
@@ -66,11 +78,18 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolderInmu
     public class ViewHolderInmuebles extends RecyclerView.ViewHolder{
         TextView direccion, valor;
         ImageView foto;
+        Button ver;
         public ViewHolderInmuebles(@NonNull View itemView) {
             super(itemView);
             direccion = itemView.findViewById(R.id.tvDireccion);
             valor = itemView.findViewById(R.id.tvPrecio);
             foto = itemView.findViewById(R.id.ivFoto);
+            ver = itemView.findViewById(R.id.btVerInmueble);
         }
     }
+
+    public interface OnInmuebleClickListener {
+        void onVerClick(Inmueble inmueble);
+    }
+
 }

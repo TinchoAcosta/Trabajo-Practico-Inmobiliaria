@@ -1,6 +1,8 @@
 package com.example.trabajopracticoinmobiliaria.models;
 
-public class Inmueble {
+import java.io.Serializable;
+
+public class Inmueble implements Serializable {
     private int idInmueble, ambientes, idPropietario;
     private String direccion, uso, tipo, imagen;
     private double superficie, latitud, longitud, valor;

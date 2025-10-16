@@ -11,8 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.example.trabajopracticoinmobiliaria.R;
 import com.example.trabajopracticoinmobiliaria.databinding.FragmentSlideshowBinding;
 import com.example.trabajopracticoinmobiliaria.models.Inmueble;
 import com.google.android.material.snackbar.Snackbar;
@@ -44,7 +46,14 @@ public class SlideshowFragment extends Fragment {
         mv.getMLista().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
             @Override
             public void onChanged(List<Inmueble> inmuebles) {
-                ListAdapter la = new ListAdapter((ArrayList<Inmueble>) inmuebles,getLayoutInflater(),getContext());
+                ListAdapter la = new ListAdapter((ArrayList<Inmueble>) inmuebles, getLayoutInflater(), getContext(), new ListAdapter.OnInmuebleClickListener() {
+                    @Override
+                    public void onVerClick(Inmueble inmueble) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("inmueble",inmueble);
+                        Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_menu).navigate(R.id.detalleInmuebleFragment,bundle);
+                    }
+                });
                 GridLayoutManager glm = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
                 binding.rvListaInmuebles.setLayoutManager(glm);
                 binding.rvListaInmuebles.setAdapter(la);

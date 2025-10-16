@@ -21,7 +21,11 @@
         android:id="@+id/nav_slideshow"
         android:name="com.example.trabajopracticoinmobiliaria.menu.ui.slideshow.SlideshowFragment"
         android:label="@string/inmuebles"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_slideshow" >
+        <action
+            android:id="@+id/action_nav_slideshow_to_detalleInmuebleFragment"
+            app:destination="@id/detalleInmuebleFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/salirFragment"
@@ -34,4 +38,9 @@
         android:name="com.example.trabajopracticoinmobiliaria.menu.ui.inquilino_contrato.InquilinoContratoFragment"
         android:label="@string/inmuebles"
         tools:layout="@layout/fragment_inquilino_contrato" />
+    <fragment
+        android:id="@+id/detalleInmuebleFragment"
+        android:name="com.example.trabajopracticoinmobiliaria.menu.ui.slideshow.DetalleInmuebleFragment"
+        android:label="@string/informaci_n_del_inmueble"
+        tools:layout="@layout/fragment_detalle_inmueble" />
 </navigation>
