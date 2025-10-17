@@ -15,7 +15,11 @@
         android:id="@+id/nav_gallery"
         android:name="com.example.trabajopracticoinmobiliaria.menu.ui.gallery.GalleryFragment"
         android:label="@string/perfil"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_gallery_to_cambiarPasswordFragment"
+            app:destination="@id/cambiarPasswordFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -25,6 +29,9 @@
         <action
             android:id="@+id/action_nav_slideshow_to_detalleInmuebleFragment"
             app:destination="@id/detalleInmuebleFragment" />
+        <action
+            android:id="@+id/action_nav_slideshow_to_agregarInmuebleFragment"
+            app:destination="@id/agregarInmuebleFragment" />
     </fragment>
 
     <fragment
@@ -43,4 +50,14 @@
         android:name="com.example.trabajopracticoinmobiliaria.menu.ui.slideshow.DetalleInmuebleFragment"
         android:label="@string/informaci_n_del_inmueble"
         tools:layout="@layout/fragment_detalle_inmueble" />
+    <fragment
+        android:id="@+id/cambiarPasswordFragment"
+        android:name="com.example.trabajopracticoinmobiliaria.menu.ui.gallery.CambiarPasswordFragment"
+        android:label="@string/cambia_tu_contrase_a"
+        tools:layout="@layout/fragment_cambiar_password" />
+    <fragment
+        android:id="@+id/agregarInmuebleFragment"
+        android:name="com.example.trabajopracticoinmobiliaria.menu.ui.slideshow.AgregarInmuebleFragment"
+        android:label="Añadir un nuevo inmueble"
+        tools:layout="@layout/fragment_agregar_inmueble" />
 </navigation>

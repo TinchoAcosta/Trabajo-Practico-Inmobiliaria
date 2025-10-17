@@ -60,6 +60,13 @@ public class SlideshowFragment extends Fragment {
             }
         });
 
+        binding.fabAgregarInmueble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_menu).navigate(R.id.agregarInmuebleFragment);
+            }
+        });
+
         mv.cargarLista();
         return root;
     }

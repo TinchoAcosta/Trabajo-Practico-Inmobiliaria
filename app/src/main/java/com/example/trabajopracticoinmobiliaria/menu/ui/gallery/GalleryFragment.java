@@ -1,17 +1,21 @@
 package com.example.trabajopracticoinmobiliaria.menu.ui.gallery;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
+import com.example.trabajopracticoinmobiliaria.R;
 import com.example.trabajopracticoinmobiliaria.databinding.FragmentGalleryBinding;
 import com.example.trabajopracticoinmobiliaria.models.Propietario;
 import com.google.android.material.snackbar.Snackbar;
@@ -84,9 +88,23 @@ public class GalleryFragment extends Fragment {
             }
         });
 
+        binding.tvCambiarContrasenia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_menu).navigate(R.id.cambiarPasswordFragment);
+            }
+        });
+
         binding.btEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(binding.btEditarPerfil.getTag().equals("guardar")){
+                    InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    View view = requireActivity().getCurrentFocus();
+                    if (view != null) {
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    }
+                }
                 mv.editarPerfil(
                         binding.etNombreEditar.getText(),
                         binding.etApellidoEditar.getText(),

@@ -18,4 +18,6 @@
     <string name="salir">Salir</string>
     <string name="editar">EDITAR</string>
     <string name="informaci_n_del_inmueble">Información del inmueble</string>
+    <string name="cambiar">CAMBIAR</string>
+    <string name="cambia_tu_contrase_a">Cambia tu contraseña</string>
 </resources>
