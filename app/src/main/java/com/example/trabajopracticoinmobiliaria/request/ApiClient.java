@@ -69,5 +69,8 @@ public class ApiClient {
         @PUT("api/Propietarios/changePassword")
         Call<Void> cambiarPassword(@Header("Authorization") String token, @Field("currentPassword") String cActual, @Field("newPassword") String cNueva);
 
+        @PUT("api/Inmuebles/actualizar")
+        Call<Inmueble> actualizarInmueble(@Header("Authorization") String token, @Body Inmueble i);
+
     }
 }

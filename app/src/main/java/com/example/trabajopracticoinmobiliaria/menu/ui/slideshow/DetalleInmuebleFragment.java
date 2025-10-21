@@ -46,6 +46,16 @@ public class DetalleInmuebleFragment extends Fragment {
             }
         });
 
+        mv.getMExito().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Snackbar.make(binding.getRoot(), s, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(Color.GREEN)
+                        .setTextColor(Color.WHITE)
+                        .show();
+            }
+        });
+
         mv.getMInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
             @Override
             public void onChanged(Inmueble inmueble) {
@@ -67,6 +77,13 @@ public class DetalleInmuebleFragment extends Fragment {
                         .error(R.drawable.inmueble)
                         .placeholder(R.drawable.ic_launcher_foreground)
                         .into(binding.ivFotoDetalleInmueble);
+            }
+        });
+
+        binding.cbDisponibleDetalleInmueble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mv.actualizar(binding.cbDisponibleDetalleInmueble.isChecked());
             }
         });
 
