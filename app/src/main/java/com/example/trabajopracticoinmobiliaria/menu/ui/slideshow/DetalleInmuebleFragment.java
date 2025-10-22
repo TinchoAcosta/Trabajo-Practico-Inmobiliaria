@@ -67,7 +67,7 @@ public class DetalleInmuebleFragment extends Fragment {
                 binding.tvLatDetalleInmueble.setText(String.format("%.2f",inmueble.getLatitud()));
                 binding.tvLongDetalleInmueble.setText(String.format("%.2f",inmueble.getLongitud()));
                 binding.tvValorDetalleInmueble.setText(String.format("$ %.2f",inmueble.getValor()));
-                binding.tvSuperficieDetalleInmueble.setText(String.format("%.2f",inmueble.getSuperficie()));
+                binding.tvSuperficieDetalleInmueble.setText(""+inmueble.getSuperficie());
 
                 String imageUrl = inmueble.getImagen().replace("\\", "/");
                 String fullUrl = ApiClient.URLBASE + imageUrl;
