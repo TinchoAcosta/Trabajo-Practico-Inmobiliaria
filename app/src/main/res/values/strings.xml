@@ -20,4 +20,18 @@
     <string name="informaci_n_del_inmueble">Información del inmueble</string>
     <string name="cambiar">CAMBIAR</string>
     <string name="cambia_tu_contrase_a">Cambia tu contraseña</string>
+
+    <string-array name="tipos_inmueble">
+        <item>Seleccione un tipo</item>
+        <item>Casa</item>
+        <item>Departamento</item>
+        <item>Local</item>
+    </string-array>
+
+    <string-array name="usos_inmueble">
+        <item>Seleccione un uso</item>
+        <item>Residencial</item>
+        <item>Comercial</item>
+    </string-array>
+
 </resources>

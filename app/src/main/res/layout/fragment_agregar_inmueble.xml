@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".menu.ui.slideshow.AgregarInmuebleFragment" >
+    android:visibility="visible"
+    tools:context=".menu.ui.slideshow.AgregarInmuebleFragment">
 
     <EditText
         android:id="@+id/etSuperficieAI"
@@ -22,37 +23,12 @@
         android:id="@+id/etDireccionAI"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Dirección"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etTipoAI"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="Tipo"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDireccionAI" />
-
-    <EditText
-        android:id="@+id/etUsoAI"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="Uso"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTipoAI" />
 
     <EditText
         android:id="@+id/etAmbientesAI"
@@ -64,7 +40,7 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsoAI" />
+        app:layout_constraintTop_toBottomOf="@+id/spUsoAI" />
 
     <EditText
         android:id="@+id/etValorAI"
@@ -107,7 +83,74 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Disponibilidad"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etLongAI" />
+
+    <ImageView
+        android:id="@+id/ivFotoElegida"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbDisponibleAI" />
+
+    <Button
+        android:id="@+id/btAgregarFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Elegir portada"
+        app:layout_constraintEnd_toStartOf="@+id/btTomarFoto"
+        app:layout_constraintTop_toBottomOf="@+id/etLongAI" />
+
+    <Button
+        android:id="@+id/btAgregarInmueble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Agregar Inmueble"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivFotoElegida" />
+
+    <ProgressBar
+        android:id="@+id/pbCargando"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btAgregarInmueble" />
+
+    <Button
+        android:id="@+id/btTomarFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tomar foto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etLongAI" />
+
+    <Spinner
+        android:id="@+id/spTipoAI"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/tipos_inmueble"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDireccionAI" />
+
+    <Spinner
+        android:id="@+id/spUsoAI"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/usos_inmueble"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spTipoAI" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
