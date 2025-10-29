@@ -61,9 +61,15 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
             if (result.getResultCode() == RESULT_OK) { //if controla que se cerro la galeria eligiendo y no cancelando
                 Intent data = result.getData();
                 Uri uri = data.getData();
-                Log.d("salada", uri.toString());
                 mUri.setValue(uri);
             }
+    }
+
+    public void recibirFotoDeCamara(ActivityResult result, Uri uri) {
+        if (result.getResultCode() == RESULT_OK) {
+            // La URI ya la tenemos, solo necesitamos confirmar que la operación fue exitosa
+            mUri.setValue(uri);
+        }
     }
 
     public void cargarInmueble(String direccion,

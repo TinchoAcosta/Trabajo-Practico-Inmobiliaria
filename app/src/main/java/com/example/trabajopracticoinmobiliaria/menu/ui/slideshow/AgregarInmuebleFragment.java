@@ -6,11 +6,15 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +33,9 @@ import android.view.inputmethod.InputMethodManager;
 import com.example.trabajopracticoinmobiliaria.databinding.FragmentAgregarInmuebleBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.File;
+import java.io.IOException;
+
 public class AgregarInmuebleFragment extends Fragment {
 
     private AgregarInmuebleViewModel mv;
@@ -36,6 +44,8 @@ public class AgregarInmuebleFragment extends Fragment {
     private ActivityResultLauncher<Intent> arlC;
     private Intent intentG;
     private Intent intentC;
+    private Uri tempPhotoUri; // Variable para guardar la URI temporal de la cámara
+    private ActivityResultLauncher<String> requestPermissionLauncher;
 
     public static AgregarInmuebleFragment newInstance() {
         return new AgregarInmuebleFragment();
@@ -46,8 +56,18 @@ public class AgregarInmuebleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         mv = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(AgregarInmuebleViewModel.class);
         binding = FragmentAgregarInmuebleBinding.inflate(inflater,container,false);
+        requestPermissionLauncher = registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(),
+                isGranted -> {
+                    if (isGranted) {
+                        takePicture();
+                    } else {
+                        Snackbar.make(binding.getRoot(), "Permiso de cámara denegado", Snackbar.LENGTH_LONG).show();
+                    }
+                });
         View root = binding.getRoot();
         abrirGaleria();
+        abrirCamara();
 
         binding.btAgregarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +79,7 @@ public class AgregarInmuebleFragment extends Fragment {
         binding.btTomarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //arlC.launch(intentC);
+                solicitarPermisos();
             }
         });
 
@@ -134,6 +154,44 @@ public class AgregarInmuebleFragment extends Fragment {
         });
     }
 
+    private void abrirCamara() {
+        arlC = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            mv.recibirFotoDeCamara(result, tempPhotoUri);
+        });
+    }
 
+    private void solicitarPermisos(){
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
+            takePicture();
+        } else {
+            requestPermissionLauncher.launch(Manifest.permission.CAMERA);
+        }
+    }
+
+    private void takePicture() {
+        try {
+            tempPhotoUri = crearArchivoImagenTemporal(); // Crea un archivo temporal
+            if (tempPhotoUri != null) {
+                intentC = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                // Indica a la cámara dónde guardar la imagen
+                intentC.putExtra(MediaStore.EXTRA_OUTPUT, tempPhotoUri);
+                arlC.launch(intentC);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Snackbar.make(binding.getRoot(), "Error al crear el archivo de imagen.", Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    private Uri crearArchivoImagenTemporal() throws IOException {
+        String nombreArchivo = "foto_inmueble_" + System.currentTimeMillis();
+        File storageDir = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File imagen = File.createTempFile(nombreArchivo, ".jpg", storageDir);
+
+        return FileProvider.getUriForFile(requireContext(),
+                requireContext().getPackageName() + ".provider",
+                imagen);
+    }
 
 }
