@@ -20,6 +20,10 @@
     <string name="informaci_n_del_inmueble">Información del inmueble</string>
     <string name="cambiar">CAMBIAR</string>
     <string name="cambia_tu_contrase_a">Cambia tu contraseña</string>
+    <string name="a_adir_un_nuevo_inmueble">Añadir un nuevo inmueble</string>
+    <string name="informaci_n_del_contrato">Información del contrato</string>
+    <string name="informaci_n_del_inquilino">Información del inquilino</string>
+    <string name="informaci_n_de_los_pagos">Información de los pagos</string>
 
     <string-array name="tipos_inmueble">
         <item>Seleccione un tipo</item>

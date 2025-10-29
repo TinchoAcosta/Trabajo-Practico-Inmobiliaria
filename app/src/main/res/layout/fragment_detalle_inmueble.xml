@@ -28,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dirección:  "
+            android:textSize="16sp"
             android:textColor="#CF0226"
             />
 
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=""
+            android:textSize="16sp"
              />
     </LinearLayout>
 
@@ -51,6 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tipo:  "
+            android:textSize="16sp"
             android:textColor="#CF0226"/>
 
         <TextView
@@ -58,7 +61,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="" />
+            android:text=""
+            android:textSize="16sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -71,6 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Uso:  "
+            android:textSize="16sp"
             android:textColor="#CF0226"/>
 
         <TextView
@@ -78,7 +83,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="" />
+            android:text=""
+            android:textSize="16sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -91,6 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ambientes:  "
+            android:textSize="16sp"
             android:textColor="#CF0226"/>
 
         <TextView
@@ -98,7 +105,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="" />
+            android:text=""
+            android:textSize="16sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -111,6 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Superficie:  "
+            android:textSize="16sp"
             android:textColor="#CF0226"/>
 
         <TextView
@@ -118,7 +127,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="" />
+            android:text=""
+            android:textSize="16sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -131,6 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Valor:  "
+            android:textSize="16sp"
             android:textColor="#CF0226"/>
 
         <TextView
@@ -138,7 +149,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="" />
+            android:text=""
+            android:textSize="16sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -151,6 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Latitud:  "
+            android:textSize="16sp"
             android:textColor="#CF0226"/>
 
         <TextView
@@ -158,7 +171,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="" />
+            android:text=""
+            android:textSize="16sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -171,6 +185,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Longitud:  "
+            android:textSize="16sp"
             android:textColor="#CF0226"/>
 
         <TextView
@@ -178,7 +193,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="" />
+            android:text=""
+            android:textSize="16sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -191,6 +207,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="16sp"
             android:text="Disponible"
             android:textColor="#CF0226"/>
     </LinearLayout>

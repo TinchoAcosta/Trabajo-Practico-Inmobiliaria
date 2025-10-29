@@ -44,7 +44,14 @@
         android:id="@+id/inquilinoContratoFragment"
         android:name="com.example.trabajopracticoinmobiliaria.menu.ui.inquilino_contrato.InquilinoContratoFragment"
         android:label="@string/inmuebles"
-        tools:layout="@layout/fragment_inquilino_contrato" />
+        tools:layout="@layout/fragment_inquilino_contrato" >
+        <action
+            android:id="@+id/action_inquilinoContratoFragment_to_detalleContratoFragment"
+            app:destination="@id/detalleContratoFragment" />
+        <action
+            android:id="@+id/action_inquilinoContratoFragment_to_detalleInquilinoFragment"
+            app:destination="@id/detalleInquilinoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detalleInmuebleFragment"
         android:name="com.example.trabajopracticoinmobiliaria.menu.ui.slideshow.DetalleInmuebleFragment"
@@ -58,6 +65,25 @@
     <fragment
         android:id="@+id/agregarInmuebleFragment"
         android:name="com.example.trabajopracticoinmobiliaria.menu.ui.slideshow.AgregarInmuebleFragment"
-        android:label="Añadir un nuevo inmueble"
+        android:label="@string/a_adir_un_nuevo_inmueble"
         tools:layout="@layout/fragment_agregar_inmueble" />
+    <fragment
+        android:id="@+id/detalleContratoFragment"
+        android:name="com.example.trabajopracticoinmobiliaria.menu.ui.inquilino_contrato.DetalleContratoFragment"
+        android:label="@string/informaci_n_del_contrato"
+        tools:layout="@layout/fragment_detalle_contrato" >
+        <action
+            android:id="@+id/action_detalleContratoFragment_to_detallePagosFragment"
+            app:destination="@id/detallePagosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleInquilinoFragment"
+        android:name="com.example.trabajopracticoinmobiliaria.menu.ui.inquilino_contrato.DetalleInquilinoFragment"
+        android:label="@string/informaci_n_del_inquilino"
+        tools:layout="@layout/fragment_detalle_inquilino" />
+    <fragment
+        android:id="@+id/detallePagosFragment"
+        android:name="com.example.trabajopracticoinmobiliaria.menu.ui.inquilino_contrato.DetallePagosFragment"
+        android:label="@string/informaci_n_de_los_pagos"
+        tools:layout="@layout/fragment_detalle_pagos" />
 </navigation>
