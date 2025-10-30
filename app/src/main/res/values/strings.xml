@@ -24,6 +24,7 @@
     <string name="informaci_n_del_contrato">Información del contrato</string>
     <string name="informaci_n_del_inquilino">Información del inquilino</string>
     <string name="informaci_n_de_los_pagos">Información de los pagos</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
 
     <string-array name="tipos_inmueble">
         <item>Seleccione un tipo</item>

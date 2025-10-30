@@ -34,22 +34,19 @@ public class SalirFragment extends Fragment {
         binding = FragmentSalirBinding.inflate(inflater,container,false);
         View root = binding.getRoot();
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Confirmar salida")
-                .setMessage("¿Deseás cerrar la aplicación?")
-                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        getActivity().finishAffinity();
-                    }
-                })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_menu).navigate(R.id.nav_home);
-                    }
-                })
-                .show();
+        binding.btSi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finishAffinity();
+            }
+        });
+
+        binding.btNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_menu).navigate(R.id.nav_home);
+            }
+        });
 
         return root;
     }

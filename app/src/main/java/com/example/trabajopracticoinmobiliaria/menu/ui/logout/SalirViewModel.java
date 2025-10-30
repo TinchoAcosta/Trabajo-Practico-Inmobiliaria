@@ -1,7 +1,12 @@
 package com.example.trabajopracticoinmobiliaria.menu.ui.logout;
 
-import androidx.lifecycle.ViewModel;
+import android.app.Application;
 
-public class SalirViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+
+public class SalirViewModel extends AndroidViewModel {
+    public SalirViewModel(@NonNull Application application) {
+        super(application);
+    }
 }

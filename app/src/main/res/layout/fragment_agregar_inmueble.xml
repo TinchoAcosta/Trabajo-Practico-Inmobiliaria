@@ -82,7 +82,9 @@
         android:id="@+id/cbDisponibleAI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:text="Disponibilidad"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etLongAI" />
 
@@ -100,9 +102,15 @@
         android:id="@+id/btAgregarFoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="Elegir portada"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="#96001E"
+        android:drawableLeft="@drawable/galeria"
+        android:textColor="#000769"
+        android:text="Galeria"
+        android:textSize="10sp"
         app:layout_constraintEnd_toStartOf="@+id/btTomarFoto"
+        app:layout_constraintStart_toEndOf="@+id/cbDisponibleAI"
         app:layout_constraintTop_toBottomOf="@+id/etLongAI" />
 
     <Button
@@ -110,6 +118,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:backgroundTint="#96001E"
+        android:textColor="#000769"
         android:text="Agregar Inmueble"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +139,12 @@
         android:id="@+id/btTomarFoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tomar foto"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="#96001E"
+        android:drawableLeft="@drawable/cam"
+        android:text="Foto"
+        android:textColor="#000769"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etLongAI" />
 
