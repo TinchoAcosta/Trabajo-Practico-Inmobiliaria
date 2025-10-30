@@ -18,6 +18,7 @@ import retrofit2.Response;
 
 public class MainActivityViewModel extends AndroidViewModel {
     private MutableLiveData<String> mError = new MutableLiveData<>();
+    private MutableLiveData<Boolean> mAgitar = new MutableLiveData<>();
     private String regexEmail = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
@@ -25,6 +26,9 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     public LiveData<String> getMError(){
         return mError;
+    }
+    public LiveData<Boolean> getMAgitar(){
+        return mAgitar;
     }
 
     public void login(Editable Email, Editable Eclave) {
@@ -64,5 +68,16 @@ public class MainActivityViewModel extends AndroidViewModel {
 
             }
         });
+    }
+
+    public void controlAcelerometro(float x, float y, float z){
+        float acceleration = (float) Math.sqrt(x * x + y * y + z * z);
+        if (acceleration > 12) {
+            mAgitar.setValue(true);
+        }
+    }
+
+    public void resetearAcelerometro(){
+        mAgitar.setValue(false);
     }
 }
