@@ -3,6 +3,7 @@ package com.example.trabajopracticoinmobiliaria;
 import android.app.Application;
 import android.content.Intent;
 import android.text.Editable;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -65,7 +66,7 @@ public class MainActivityViewModel extends AndroidViewModel {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 mError.postValue("Error de Servidor");
-
+                Log.d("TEST",t.getMessage());
             }
         });
     }

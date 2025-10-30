@@ -30,7 +30,7 @@ import retrofit2.http.Path;
 
 public class ApiClient {
 
-    public static final String URLBASE= "https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/";
+    public static final String URLBASE= "http://localhost:5090/";
 
     public static InmobiliariaService getApiInmobiliaria(){
 
@@ -60,35 +60,35 @@ public class ApiClient {
     public interface InmobiliariaService{
 
         @FormUrlEncoded
-        @POST("api/Propietarios/login")
+        @POST("api/Propietario/login")
         Call<String> login(@Field("Usuario") String u, @Field("Clave") String c);
 
-        @GET("api/Propietarios")
+        @GET("api/Propietario")
         Call<Propietario> obtenerPropietario(@Header("Authorization") String token);
 
-        @GET("api/Inmuebles")
+        @GET("api/Inmueble")
         Call<List<Inmueble>> obtenerInmuebles(@Header("Authorization") String token);
 
-        @PUT("api/Propietarios/actualizar")
+        @PUT("api/Propietario/actualizar")
         Call<Propietario> actualizarPropietario(@Header("Authorization") String token, @Body Propietario p);
 
         @FormUrlEncoded
-        @PUT("api/Propietarios/changePassword")
+        @PUT("api/Propietario/changePassword")
         Call<Void> cambiarPassword(@Header("Authorization") String token, @Field("currentPassword") String cActual, @Field("newPassword") String cNueva);
 
-        @PUT("api/Inmuebles/actualizar")
+        @PUT("api/Inmueble/actualizar")
         Call<Inmueble> actualizarInmueble(@Header("Authorization") String token, @Body Inmueble i);
 
         @Multipart
-        @POST("api/Inmuebles/cargar")
+        @POST("api/Inmueble/cargar")
         Call<Inmueble> cargarInmueble(@Header("Authorization") String token,
                                       @Part MultipartBody.Part imagen,
                                       @Part("inmueble")RequestBody inmueble);
 
-        @GET("api/contratos/inmueble/{id}")
+        @GET("api/contrato/inmueble/{id}")
         Call<Contrato> cargarContrato(@Header("Authorization") String token, @Path("id") int idInmueble);
 
-        @GET("api/pagos/contrato/{id}")
+        @GET("api/pago/contrato/{id}")
         Call<List<Pago>> cargarPagos(@Header("Authorization") String token, @Path("id") int idContrato);
     }
 }
