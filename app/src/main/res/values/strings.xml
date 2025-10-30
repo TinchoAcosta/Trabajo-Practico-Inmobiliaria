@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Trabajo Practico Inmobiliaria</string>
+    <string name="app_name">Inmobiliaria Pepito</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
