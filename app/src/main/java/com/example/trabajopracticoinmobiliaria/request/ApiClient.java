@@ -30,7 +30,7 @@ import retrofit2.http.Path;
 
 public class ApiClient {
 
-    public static final String URLBASE= "http://localhost:5090/";
+    public static final String URLBASE= "http://{ip}:5090/";
 
     public static InmobiliariaService getApiInmobiliaria(){
 
