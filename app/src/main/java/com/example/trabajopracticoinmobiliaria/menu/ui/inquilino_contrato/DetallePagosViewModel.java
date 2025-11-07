@@ -13,7 +13,10 @@ import com.example.trabajopracticoinmobiliaria.models.Contrato;
 import com.example.trabajopracticoinmobiliaria.models.Pago;
 import com.example.trabajopracticoinmobiliaria.request.ApiClient;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +49,14 @@ public class DetallePagosViewModel extends AndroidViewModel {
                 @Override
                 public void onResponse(Call<List<Pago>> call, Response<List<Pago>> response) {
                     if(response.isSuccessful()){
-                        mPagos.postValue(response.body());
+                        List<Pago> pagos = response.body();
+                        if (pagos != null || !pagos.isEmpty()){
+                            for (Pago p:pagos) {
+                                String fechaNueva = formatearFechas(p.getFechaPago());
+                                p.setFechaPago(fechaNueva);
+                            }
+                            mPagos.setValue(pagos);
+                        }
                     }else if(response.code() == 404){
                         mError.setValue("Contrato sin pagos.");
                     }else {
@@ -59,6 +69,24 @@ public class DetallePagosViewModel extends AndroidViewModel {
                     mError.setValue("Error del servidor");
                 }
             });
+        }
+    }
+
+    public String formatearFechas(String fechaOrigen){
+        try {
+            // Formato original: "yyyy-MM-dd"
+            SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+            // Formato deseado: "dd/MM/yyyy"
+            SimpleDateFormat formatoSalida = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+            // Parsear la fecha original
+            Date fecha = formatoEntrada.parse(fechaOrigen);
+
+            // Formatear a nuevo formato
+            return formatoSalida.format(fecha);
+        } catch (Exception e) {
+            return fechaOrigen;
         }
     }
 }

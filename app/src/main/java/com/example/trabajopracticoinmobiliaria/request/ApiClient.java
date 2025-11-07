@@ -90,5 +90,8 @@ public class ApiClient {
 
         @GET("api/pagos/contrato/{id}")
         Call<List<Pago>> cargarPagos(@Header("Authorization") String token, @Path("id") int idContrato);
+
+        @GET("api/Inmuebles/GetContratoVigente")
+        Call<List<Inmueble>> obtenerInmueblesConContrato(@Header("Authorization") String token);
     }
 }

@@ -12,6 +12,10 @@ import com.example.trabajopracticoinmobiliaria.models.Contrato;
 import com.example.trabajopracticoinmobiliaria.models.Inmueble;
 import com.example.trabajopracticoinmobiliaria.request.ApiClient;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,6 +53,10 @@ public class DetalleContratoViewModel extends AndroidViewModel {
                     if(response.isSuccessful()){
                         Contrato contrato = response.body();
                         if (contrato != null) {
+                            String fechaI = formatearFechas(contrato.getFechaInicio());
+                            String fechaF = formatearFechas(contrato.getFechaFinalizacion());
+                            contrato.setFechaInicio(fechaI);
+                            contrato.setFechaFinalizacion(fechaF);
                             mContrato.setValue(contrato);
                             mEstado.setValue(contrato.isEstado());
                         }
@@ -64,6 +72,24 @@ public class DetalleContratoViewModel extends AndroidViewModel {
                     mError.setValue("Error del servidor");
                 }
             });
+        }
+    }
+
+    public String formatearFechas(String fechaOrigen){
+        try {
+            // Formato original: "yyyy-MM-dd"
+            SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+            // Formato deseado: "dd/MM/yyyy"
+            SimpleDateFormat formatoSalida = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+            // Parsear la fecha original
+            Date fecha = formatoEntrada.parse(fechaOrigen);
+
+            // Formatear a nuevo formato
+            return formatoSalida.format(fecha);
+        } catch (Exception e) {
+            return fechaOrigen;
         }
     }
 }
